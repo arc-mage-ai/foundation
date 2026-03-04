@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed a Child — Every Dollar Counts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased">
+
+  <!-- Header -->
+  <header class="w-full max-w-2xl mx-auto px-6 pt-6 pb-2 flex items-center justify-between">
+    <img src="assets/logo.svg" alt="FeedHope" class="h-8">
+    <span class="flex items-center gap-1 text-xs text-gray-400 font-medium">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+      Verified 501(c)(3)
+    </span>
+  </header>
+
+  <main class="w-full max-w-2xl mx-auto px-6">
+
+    <!-- Hero Image -->
+    <div class="rounded-2xl overflow-hidden mt-2 mb-6">
+      <img
+        src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80"
+        alt="Child smiling with a meal"
+        class="w-full h-56 sm:h-72 object-cover"
+      >
+    </div>
+
+    <!-- Headline -->
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-center mb-2">
+      Every Dollar Feeds a Child
+    </h1>
+    <p class="text-center text-gray-500 mb-8">
+      Your donation goes directly to meals. No overhead. No complexity.
+    </p>
+
+    <!-- Amount Selection -->
+    <div id="amount-buttons" class="grid grid-cols-4 gap-3 mb-6">
+      <button class="amount-btn" data-amount="1" data-meals="1">
+        <span class="text-lg font-bold">$1</span>
+        <span class="text-xs text-gray-500 group-[.selected]:text-white/80">1 meal</span>
+      </button>
+      <button class="amount-btn" data-amount="2" data-meals="3">
+        <span class="text-lg font-bold">$2</span>
+        <span class="text-xs text-gray-500 group-[.selected]:text-white/80">3 meals</span>
+      </button>
+      <button class="amount-btn selected" data-amount="5" data-meals="8">
+        <span class="text-lg font-bold">$5</span>
+        <span class="text-xs text-gray-500 group-[.selected]:text-white/80">8 meals</span>
+      </button>
+      <button class="amount-btn" data-amount="other">
+        <span class="text-lg font-bold">Other</span>
+      </button>
+    </div>
+
+    <!-- Custom Amount Input (hidden by default) -->
+    <div id="custom-amount" class="hidden mb-6">
+      <div class="relative">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-semibold text-lg">$</span>
+        <input
+          type="number"
+          id="custom-input"
+          min="1"
+          placeholder="Enter amount"
+          class="w-full pl-9 pr-4 py-3 text-lg font-semibold border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-0 outline-none transition-colors"
+          aria-label="Custom donation amount"
+        >
+      </div>
+      <p id="custom-meals" class="text-sm text-gray-500 mt-2 text-center"></p>
+    </div>
+
+    <!-- Give Now CTA -->
+    <button id="give-now-btn" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white text-lg font-semibold rounded-2xl transition-all active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-emerald-200" aria-label="Give now">
+      Give Now &rarr;
+    </button>
+
+    <!-- Payment Panel (hidden) -->
+    <div id="payment-panel" class="hidden mt-6 payment-slide">
+      <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+        <h2 class="text-xl font-semibold mb-4">Almost there.</h2>
+
+        <label for="email" class="block text-sm font-medium text-gray-600 mb-1">Email (optional, for receipt)</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="you@example.com"
+          class="w-full px-4 py-3 mb-4 border border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-0 outline-none transition-colors"
+        >
+
+        <label class="block text-sm font-medium text-gray-600 mb-1">Card</label>
+        <div class="w-full px-4 py-3 mb-6 bg-white border border-gray-200 rounded-xl text-gray-400 select-none">
+          4242 4242 4242 4242 &nbsp;&middot;&nbsp; 12/28 &nbsp;&middot;&nbsp; 123
+        </div>
+
+        <button id="complete-btn" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white text-lg font-semibold rounded-2xl transition-all active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-emerald-200">
+          Complete Donation
+        </button>
+      </div>
+    </div>
+
+    <!-- Success State (hidden) -->
+    <div id="success-panel" class="hidden mt-6 text-center py-10">
+      <div class="checkmark-circle mx-auto mb-4">
+        <svg class="w-16 h-16 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path class="checkmark-path" stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">Done. You just provided <span id="success-meals" class="text-emerald-600">8 meals</span>.</h2>
+      <p class="text-gray-500 mb-6">Every meal matters. Thank you.</p>
+      <div class="flex items-center justify-center gap-3">
+        <button id="share-btn" class="px-5 py-2 text-sm font-medium border border-gray-200 rounded-full hover:bg-gray-50 transition-colors" aria-label="Copy share link">
+          Copy Link
+        </button>
+        <a href="https://twitter.com/intent/tweet?text=I%20just%20donated%20to%20feed%20children%20in%20need!" target="_blank" rel="noopener" class="px-5 py-2 text-sm font-medium border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
+          Share on X
+        </a>
+      </div>
+      <button id="give-again-btn" class="mt-4 text-sm text-emerald-600 hover:text-emerald-700 font-medium">Give Again</button>
+    </div>
+
+    <!-- Trust Signals -->
+    <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-6 mb-10 text-sm text-gray-400">
+      <span class="flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+        256-bit Secure
+      </span>
+      <span class="flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+        4.9&#9733; from 2,400+ donors
+      </span>
+      <span class="flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        501(c)(3) Verified
+      </span>
+      <span class="flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+        12M+ meals served
+      </span>
+    </div>
+
+    <!-- Below the Fold -->
+    <section class="border-t border-gray-100 pt-10 pb-16 text-center">
+      <h2 class="text-2xl font-bold mb-3">Where your money goes</h2>
+      <p class="text-gray-500 max-w-md mx-auto mb-8">
+        100% of donations fund meals. Operating costs are covered by founding donors.
+      </p>
+      <div class="grid grid-cols-3 gap-6 max-w-sm mx-auto">
+        <div>
+          <p class="text-3xl font-bold text-emerald-600">100%</p>
+          <p class="text-xs text-gray-400 mt-1">To meals</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-emerald-600">$0</p>
+          <p class="text-xs text-gray-400 mt-1">Admin fees</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-emerald-600">12M+</p>
+          <p class="text-xs text-gray-400 mt-1">Meals served</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-xs text-gray-400 pb-8">
+    <p>&copy; 2026 FeedHope Foundation &middot; 501(c)(3) &middot; EIN 12-3456789</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
