@@ -1,6 +1,6 @@
 # FeedHope Foundation — Static Site
 
-Small static site for FeedHope Foundation. Shared header/footer are included client-side and require an HTTP server to work correctly (browsers block `fetch()` when opening pages via `file://`).
+Small static site for Arc Aleph Foundation. Shared header/footer are included client-side and require an HTTP server to work correctly (browsers block `fetch()` when opening pages via `file://`).
 
 ## Prerequisites
 - Node.js & npm (optional, for `npx http-server`)
