@@ -13,8 +13,24 @@
   const successMeals = document.getElementById('success-meals');
   const shareBtn = document.getElementById('share-btn');
   const giveAgainBtn = document.getElementById('give-again-btn');
+  const coverFeesCheckbox = document.getElementById('cover-fees-checkbox');
+  const shareCheckbox = document.getElementById('share-checkbox');
+  const subtotalEl = document.getElementById('subtotal');
+  const additionalTotalEl = document.getElementById('additional-total');
+  const totalAmountEl = document.getElementById('total-amount');
 
   let selectedAmount = 5;
+
+  // Update totals for PayPal checkout
+  function updateCheckoutTotals() {
+    let additional = 0;
+    if (coverFeesCheckbox.checked) additional += 0.05;
+    if (shareCheckbox.checked) additional += 3.00;
+
+    subtotalEl.textContent = `$${selectedAmount.toFixed(2)}`;
+    additionalTotalEl.textContent = `$${additional.toFixed(2)}`;
+    totalAmountEl.textContent = `$${(selectedAmount + additional).toFixed(2)}`;
+  }
 
   // Amount button toggle
   amountBtns.forEach(btn => {
@@ -26,24 +42,26 @@
       if (val === 'other') {
         customWrap.classList.remove('hidden');
         customInput.focus();
-        selectedAmount = parseInt(customInput.value) || 0;
+        selectedAmount = parseFloat(customInput.value) || 0;
       } else {
         customWrap.classList.add('hidden');
-        selectedAmount = parseInt(val);
+        selectedAmount = parseFloat(val);
       }
+      if (!paymentPanel.classList.contains('hidden')) updateCheckoutTotals();
     });
   });
 
   // Custom amount live meal counter
   customInput.addEventListener('input', () => {
-    const val = parseInt(customInput.value) || 0;
+    const val = parseFloat(customInput.value) || 0;
     selectedAmount = val;
     if (val > 0) {
       const meals = Math.round(val * MEALS_PER_DOLLAR);
-      customMeals.textContent = `$${val} = ${meals} meal${meals !== 1 ? 's' : ''}`;
+      customMeals.textContent = `$${val.toFixed(2)} = ${meals} meal${meals !== 1 ? 's' : ''}`;
     } else {
       customMeals.textContent = '';
     }
+    if (!paymentPanel.classList.contains('hidden')) updateCheckoutTotals();
   });
 
   // Give Now → show payment panel
@@ -54,7 +72,12 @@
     }
     giveNowBtn.classList.add('hidden');
     paymentPanel.classList.remove('hidden');
+    updateCheckoutTotals();
   });
+
+  // Checkbox listeners for PayPal options
+  coverFeesCheckbox.addEventListener('change', updateCheckoutTotals);
+  shareCheckbox.addEventListener('change', updateCheckoutTotals);
 
   // Complete Donation → mock processing
   completeBtn.addEventListener('click', () => {
@@ -87,7 +110,7 @@
     document.getElementById('amount-buttons').classList.remove('hidden');
     giveNowBtn.classList.remove('hidden');
     completeBtn.disabled = false;
-    completeBtn.textContent = 'Complete Donation';
+    completeBtn.textContent = 'Continue to PayPal';
     selectedAmount = 5;
 
     amountBtns.forEach(b => b.classList.remove('selected'));
@@ -95,5 +118,9 @@
     customWrap.classList.add('hidden');
     customInput.value = '';
     customMeals.textContent = '';
+
+    // Reset checkboxes
+    coverFeesCheckbox.checked = false;
+    shareCheckbox.checked = false;
   });
 })();

@@ -38,7 +38,7 @@
       Every Dollar Feeds a Child
     </h1>
     <p class="text-center text-gray-500 mb-8">
-      Your donation goes directly to meals, guaranteeing at least one child gets to eat.
+      Your donation guarantees at least more one child gets to eat.
     </p>
 
     <!-- Amount Selection -->
@@ -81,27 +81,60 @@
       Give Now &rarr;
     </button>
 
-    <!-- Payment Panel (hidden) -->
+    <!-- Payment Panel (hidden) - PayPal Checkout Mockup -->
     <div id="payment-panel" class="hidden mt-6 payment-slide">
       <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-        <h2 class="text-xl font-semibold mb-4">Almost there.</h2>
+        <h2 class="text-xl font-semibold mb-4">PayPal Checkout</h2>
+        <p class="text-sm text-gray-600 mb-6">Add optional items:</p>
 
-        <label for="email" class="block text-sm font-medium text-gray-600 mb-1">Email (optional, for receipt)</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="you@example.com"
-          class="w-full px-4 py-3 mb-4 border border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-0 outline-none transition-colors"
-        >
+        <!-- Checkbox 1: Cover Transaction Fees -->
+        <label class="flex items-center gap-3 p-3 mb-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+          <input
+            type="checkbox"
+            id="cover-fees-checkbox"
+            class="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+          >
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-900">Cover Transaction Fees</p>
+            <p class="text-xs text-gray-500">Help us process your donation</p>
+          </div>
+          <span class="text-lg font-semibold text-gray-900">+$0.05</span>
+        </label>
 
-        <label class="block text-sm font-medium text-gray-600 mb-1">Card</label>
-        <div class="w-full px-4 py-3 mb-6 bg-white border border-gray-200 rounded-xl text-gray-400 select-none">
-          4242 4242 4242 4242 &nbsp;&middot;&nbsp; 12/28 &nbsp;&middot;&nbsp; 123
+        <!-- Checkbox 2: Share with 1000 people -->
+        <label class="flex items-center gap-3 p-3 mb-6 bg-white border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+          <input
+            type="checkbox"
+            id="share-checkbox"
+            class="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+          >
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-900">Share with 1000 people</p>
+            <p class="text-xs text-gray-500">Help spread the word</p>
+          </div>
+          <span class="text-lg font-semibold text-gray-900">+$3.00</span>
+        </label>
+
+        <!-- Order Summary -->
+        <div class="bg-white rounded-lg p-3 mb-6 border border-gray-200">
+          <div class="flex justify-between text-sm mb-2">
+            <span class="text-gray-600">Subtotal</span>
+            <span id="subtotal" class="font-medium">$0.00</span>
+          </div>
+          <div class="flex justify-between text-sm mb-3 pb-3 border-b border-gray-200">
+            <span class="text-gray-600">Additional items</span>
+            <span id="additional-total" class="font-medium">$0.00</span>
+          </div>
+          <div class="flex justify-between text-lg font-semibold">
+            <span>Total</span>
+            <span id="total-amount" class="text-emerald-600">$0.00</span>
+          </div>
         </div>
 
         <button id="complete-btn" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white text-lg font-semibold rounded-2xl transition-all active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-emerald-200">
-          Complete Donation
+          Continue to PayPal
         </button>
+        <p class="text-xs text-gray-400 text-center mt-3">PayPal Checkout • Secure Payment</p>
       </div>
     </div>
 
@@ -157,12 +190,12 @@
           <p class="text-xs text-gray-400 mt-1">To meals</p>
         </div>
         <div>
-          <p class="text-3xl font-bold text-emerald-600">15%</p>
-          <p class="text-xs text-gray-400 mt-1">Advertising &amp; operating costs</p>
+          <p class="text-3xl font-bold text-emerald-600">10%</p>
+          <p class="text-xs text-gray-400 mt-1">Advertising Costs</p>
         </div>
         <div>
-          <p class="text-3xl font-bold text-emerald-600">12M+</p>
-          <p class="text-xs text-gray-400 mt-1">Meals served</p>
+          <p class="text-3xl font-bold text-emerald-600">10%</p>
+          <p class="text-xs text-gray-400 mt-1">Operating Cost</p>
         </div>
       </div>
     </section>
