@@ -20,23 +20,7 @@
   </script>
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased">
-
-  <!-- Header -->
-  <header class="w-full max-w-2xl mx-auto px-6 pt-6 pb-2 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <img src="assets/logo.svg" alt="Arc Aleph LLC" class="h-8">
-      <span class="text-sm font-semibold text-gray-700">Arc Aleph LLC</span>
-    </div>
-    <span class="flex items-center gap-2 text-xs text-gray-400 font-medium">
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16c0 2.761 4.029 5 9 5s9-2.239 9-5H3z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 11c0-2 2.5-4 5-4s5 2 5 4" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 6.5c0-.83.67-1.5 1.5-1.5" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M14.5 6.5c0-.83.67-1.5 1.5-1.5" />
-      </svg>
-      One meal at a time
-    </span>
-  </header>
+  <div data-include="components/header.html" aria-hidden="false"></div>
   
   <main class="w-full max-w-2xl mx-auto px-6 pt-8 pb-16">
 
@@ -109,10 +93,9 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="text-center text-xs text-gray-400 pb-8">
-    <p>&copy; 2026 FeedHope Foundation &middot; 501(c)(3) &middot; EIN 12-3456789</p>
-  </footer>
+  <div data-include="components/footer.html" aria-hidden="false"></div>
+
+  <script src="scripts/include-components.js"></script>
 
 </body>
 </html>
