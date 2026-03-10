@@ -73,35 +73,34 @@
     .img-stack {
       position: relative;
       height: 380px;
+      overflow: hidden;
+      border-radius: 16px;
     }
     .img-stack img:nth-child(1) {
       position: absolute;
       left: 0;
       top: 20px;
-      width: 54%;
+      width: 43%;
       transform: rotate(-3deg);
       z-index: 1;
       border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
     }
     .img-stack img:nth-child(2) {
       position: absolute;
       left: 22%;
       top: 0;
-      width: 54%;
+      width: 43%;
       z-index: 2;
       border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
     }
     .img-stack img:nth-child(3) {
       position: absolute;
       right: 0;
       top: 20px;
-      width: 54%;
+      width: 43%;
       transform: rotate(3deg);
       z-index: 1;
       border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
     }
 
     @keyframes pulse-glow {
@@ -266,16 +265,12 @@
           </div>
         </div>
         <!-- AI Visual -->
-        <div class="order-1 md:order-2 rounded-xl overflow-hidden flex items-center justify-center" style="height: 280px; background: radial-gradient(ellipse at center, rgba(168,85,247,0.15) 0%, rgba(168,85,247,0.03) 60%, transparent 100%); border: 1px solid rgba(168,85,247,0.15);">
-          <div class="text-center select-none">
-            <p class="ai-pulse font-mono text-5xl font-bold" style="color: #a855f7; letter-spacing: -0.02em;">arc_mage</p>
-            <p class="tag mt-3" style="color: rgba(168,85,247,0.5);">// arcmage.ai</p>
-            <div class="flex justify-center gap-2 mt-6">
-              <span class="inline-block w-1.5 h-1.5 rounded-full ai-pulse" style="background: #a855f7;"></span>
-              <span class="inline-block w-1.5 h-1.5 rounded-full ai-pulse" style="background: #a855f7; animation-delay: 0.3s;"></span>
-              <span class="inline-block w-1.5 h-1.5 rounded-full ai-pulse" style="background: #a855f7; animation-delay: 0.6s;"></span>
-            </div>
-          </div>
+        <div class="order-1 md:order-2 rounded-xl overflow-hidden" style="height: 280px;">
+          <img
+            src="assets/products/arcmage/arcmage.png"
+            alt="arc_mage interface"
+            class="w-full h-full object-cover"
+          >
         </div>
       </div>
     </a>
