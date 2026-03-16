@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
-                 script-src 'self' https://www.paypal.com https://www.paypalobjects.com;
+                 script-src 'self' 'unsafe-inline' https://www.paypal.com https://www.paypalobjects.com;
                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                  font-src https://fonts.gstatic.com;
                  img-src 'self' data: https://www.paypalobjects.com https://images.unsplash.com;
                  connect-src 'self' https://www.paypal.com https://www.sandbox.paypal.com;
                  frame-src https://www.paypal.com;">
   <title>Charity — Feed a Child | Arc Aleph LLC</title>
+  <link rel="icon" href="assets/official-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +22,7 @@
        Replace YOUR_CLIENT_ID with your app's client ID from developer.paypal.com.
        For sandbox testing use your sandbox client ID and add &components=buttons to the URL.
        Switch to live by removing the &debug=true param and using your live client ID. -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AYXUpMX2nfoMw8OHN_KBGyVmIHSTqxerhcc2URPwnU9C6R875iAuU9nxrsa2tpfDm78eUgms4yJnBOX5&currency=USD&intent=capture&components=buttons" data-namespace="paypal"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=ARIb_fdkSbFVeEWMzOnA3iscvuSa0U5zcTgz1eAbpRrCfGMxhkWW6ZagJLIks2_nuFwb7tTKq8_V48TZ&currency=USD&intent=capture&components=buttons" data-namespace="paypal"></script>
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased">
   <div data-include="components/header.html" aria-hidden="false"></div>
