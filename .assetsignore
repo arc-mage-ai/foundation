@@ -1,0 +1,7 @@
+node_modules/
+.git/
+planing/
+tailwind.config.js
+tailwind.input.css
+package.json
+package-lock.json
