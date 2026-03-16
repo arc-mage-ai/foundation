@@ -144,12 +144,14 @@
 
     <!-- Success State (hidden) -->
     <div id="success-panel" class="hidden mt-6 text-center py-10">
-      <div class="checkmark-circle mx-auto mb-4">
-        <svg class="w-16 h-16 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path class="checkmark-path" stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
+      <div class="flex items-center justify-center gap-3 mb-2">
+        <div class="checkmark-circle">
+          <svg class="w-8 h-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path class="checkmark-path" stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h2 class="text-2xl font-bold">Done. You just provided <span id="success-meals" class="text-emerald-600">8 meals</span>.</h2>
       </div>
-      <h2 class="text-2xl font-bold mb-2">Done. You just provided <span id="success-meals" class="text-emerald-600">8 meals</span>.</h2>
       <p class="text-gray-500 mb-6">Every meal matters. Thank you.</p>
       <div class="flex items-center justify-center gap-3">
         <button id="share-btn" class="px-5 py-2 text-sm font-medium border border-gray-200 rounded-full hover:bg-gray-50 transition-colors" aria-label="Copy share link">
