@@ -9,6 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- PayPal JS SDK
+       Replace YOUR_CLIENT_ID with your app's client ID from developer.paypal.com.
+       For sandbox testing use your sandbox client ID and add &components=buttons to the URL.
+       Switch to live by removing the &debug=true param and using your live client ID. -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AYXUpMX2nfoMw8OHN_KBGyVmIHSTqxerhcc2URPwnU9C6R875iAuU9nxrsa2tpfDm78eUgms4yJnBOX5&currency=USD&intent=capture&components=buttons" data-namespace="paypal"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -131,9 +136,8 @@
           </div>
         </div>
 
-        <button id="complete-btn" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white text-lg font-semibold rounded-2xl transition-all active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-emerald-200">
-          Continue to PayPal
-        </button>
+        <!-- PayPal renders its button(s) here -->
+        <div id="paypal-button-container" class="min-h-[55px]"></div>
         <p class="text-xs text-gray-400 text-center mt-3">PayPal Checkout • Secure Payment</p>
       </div>
     </div>

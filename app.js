@@ -8,7 +8,6 @@
   const customMeals = document.getElementById('custom-meals');
   const giveNowBtn = document.getElementById('give-now-btn');
   const paymentPanel = document.getElementById('payment-panel');
-  const completeBtn = document.getElementById('complete-btn');
   const successPanel = document.getElementById('success-panel');
   const successMeals = document.getElementById('success-meals');
   const shareBtn = document.getElementById('share-btn');
@@ -30,6 +29,36 @@
     subtotalEl.textContent = `$${selectedAmount.toFixed(2)}`;
     additionalTotalEl.textContent = `$${additional.toFixed(2)}`;
     totalAmountEl.textContent = `$${(selectedAmount + additional).toFixed(2)}`;
+  }
+
+  // Render (or re-render) the PayPal button with the current total
+  function renderPayPalButton() {
+    const container = document.getElementById('paypal-button-container');
+    container.innerHTML = '';
+
+    let additional = 0;
+    if (coverFeesCheckbox.checked) additional += 0.05;
+    if (shareCheckbox.checked) additional += 3.00;
+    const total = (selectedAmount + additional).toFixed(2);
+
+    paypal.Buttons({
+      createOrder: (_data, actions) => actions.order.create({
+        application_context: { shipping_preference: 'NO_SHIPPING' },
+        purchase_units: [{
+          amount: { value: total, currency_code: 'USD' },
+          description: 'Feed a Child Donation'
+        }]
+      }),
+      onApprove: (_data, actions) => actions.order.capture().then(() => {
+        paymentPanel.classList.add('hidden');
+        const meals = Math.round(selectedAmount * MEALS_PER_DOLLAR);
+        successMeals.textContent = `${meals} meal${meals !== 1 ? 's' : ''}`;
+        successPanel.classList.remove('hidden');
+        document.getElementById('amount-buttons').classList.add('hidden');
+        customWrap.classList.add('hidden');
+      }),
+      onError: (err) => console.error('PayPal error:', err)
+    }).render('#paypal-button-container');
   }
 
   // Amount button toggle
@@ -73,28 +102,12 @@
     giveNowBtn.classList.add('hidden');
     paymentPanel.classList.remove('hidden');
     updateCheckoutTotals();
+    renderPayPalButton();
   });
 
   // Checkbox listeners for PayPal options
-  coverFeesCheckbox.addEventListener('change', updateCheckoutTotals);
-  shareCheckbox.addEventListener('change', updateCheckoutTotals);
-
-  // Complete Donation → mock processing
-  completeBtn.addEventListener('click', () => {
-    completeBtn.disabled = true;
-    completeBtn.innerHTML = '<span class="spinner"></span>';
-
-    setTimeout(() => {
-      paymentPanel.classList.add('hidden');
-
-      const meals = Math.round(selectedAmount * MEALS_PER_DOLLAR);
-      successMeals.textContent = `${meals} meal${meals !== 1 ? 's' : ''}`;
-
-      successPanel.classList.remove('hidden');
-      document.getElementById('amount-buttons').classList.add('hidden');
-      customWrap.classList.add('hidden');
-    }, 1500);
-  });
+  coverFeesCheckbox.addEventListener('change', () => { updateCheckoutTotals(); renderPayPalButton(); });
+  shareCheckbox.addEventListener('change', () => { updateCheckoutTotals(); renderPayPalButton(); });
 
   // Copy link
   shareBtn.addEventListener('click', () => {
@@ -109,8 +122,6 @@
     successPanel.classList.add('hidden');
     document.getElementById('amount-buttons').classList.remove('hidden');
     giveNowBtn.classList.remove('hidden');
-    completeBtn.disabled = false;
-    completeBtn.textContent = 'Continue to PayPal';
     selectedAmount = 5;
 
     amountBtns.forEach(b => b.classList.remove('selected'));
