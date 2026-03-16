@@ -3,150 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- CSP: tighten script-src once cdn.tailwindcss.com is replaced with a built CSS file (removes need for unsafe-eval/unsafe-inline) -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
-                 script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com;
-                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 script-src 'self';
+                 style-src 'self' https://fonts.googleapis.com;
                  font-src https://fonts.gstatic.com;
                  img-src 'self' data: https://images.unsplash.com;
                  connect-src 'self';
                  frame-src 'none';">
   <title>Arc Aleph LLC — AI · Entertainment · Community</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['Space Mono', 'monospace'],
-          },
-          colors: {
-            cyber: {
-              bg: '#07070f',
-              card: '#0d0d1a',
-              border: '#1a1a2e',
-              cyan: '#00e5ff',
-              purple: '#a855f7',
-              green: '#10b981',
-              muted: '#475569',
-              text: '#e2e8f0',
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #07070f;
-      background-image:
-        linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-
-    .glow-cyan {
-      box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.15), 0 0 30px rgba(0, 229, 255, 0.06);
-    }
-    .glow-cyan:hover {
-      box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.4), 0 0 40px rgba(0, 229, 255, 0.12);
-    }
-    .glow-purple {
-      box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.15), 0 0 30px rgba(168, 85, 247, 0.06);
-    }
-    .glow-purple:hover {
-      box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.12);
-    }
-    .glow-green {
-      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.15), 0 0 30px rgba(16, 185, 129, 0.06);
-    }
-    .glow-green:hover {
-      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.4), 0 0 40px rgba(16, 185, 129, 0.12);
-    }
-    .glow-ai {
-      box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.2), 0 0 60px rgba(168, 85, 247, 0.1);
-    }
-    .glow-ai:hover {
-      box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.5), 0 0 80px rgba(168, 85, 247, 0.2);
-    }
-
-    .product-row {
-      transition: transform 0.3s ease;
-    }
-
-    .img-stack {
-      position: relative;
-      height: 380px;
-      border-radius: 16px;
-    }
-    .img-stack img:nth-child(1) {
-      position: absolute;
-      left: 0;
-      top: 20px;
-      height: 320px;
-      width: auto;
-      transform: rotate(-3deg);
-      z-index: 1;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-    }
-    .img-stack img:nth-child(2) {
-      position: absolute;
-      left: 22%;
-      top: 0;
-      height: 340px;
-      width: auto;
-      z-index: 2;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-    }
-    .img-stack img:nth-child(3) {
-      position: absolute;
-      left: 44%;
-      top: 20px;
-      height: 320px;
-      width: auto;
-      transform: rotate(3deg);
-      z-index: 1;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
-    .ai-pulse {
-      animation: pulse-glow 3s ease-in-out infinite;
-    }
-
-    @keyframes scanline {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100vh); }
-    }
-
-    .hero-gradient {
-      background: radial-gradient(ellipse at 50% 0%, rgba(0, 229, 255, 0.08) 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
-    }
-
-    .tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: #475569;
-    }
-  </style>
+  <link rel="stylesheet" href="dist/style.css">
 </head>
 <body class="text-cyber-text font-sans antialiased min-h-screen">
 
   <!-- Header -->
-  <header class="w-full px-6 py-5 flex items-center justify-between border-b border-white/5 sticky top-0 z-50" style="background: rgba(7,7,15,0.85); backdrop-filter: blur(12px);">
+  <header class="w-full px-6 py-5 flex items-center justify-between border-b border-white/5 sticky top-0 z-50 header-glass">
     <div class="flex items-center gap-3">
       <img src="assets/logo.svg" alt="Arc Aleph LLC" class="h-7 opacity-90">
       <span class="text-sm font-semibold text-white/70 tracking-wide">Arc Aleph LLC</span>
@@ -161,7 +35,7 @@
   <section class="hero-gradient px-6 pt-24 pb-20 text-center max-w-4xl mx-auto">
     <p class="tag mb-4">// arc_mage's mission</p>
     <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-[1.05] mb-6">
-      Arc Aleph <span style="color: #00e5ff;">LLC</span>
+      Arc Aleph <span class="text-cyber-cyan">LLC</span>
     </h1>
     <p class="text-lg sm:text-xl text-white/50 font-light max-w-xl mx-auto leading-relaxed mb-2">
       At the intersection of <span class="text-white/80">AI</span>, <span class="text-white/80">Entertainment</span>, and <span class="text-white/80">Community</span>
@@ -181,7 +55,7 @@
   <main class="max-w-6xl mx-auto px-6 pb-24 space-y-6">
 
     <!-- Row 1: QUIGGI -->
-    <div class="glow-cyan product-row rounded-2xl p-8 sm:p-12 transition-all duration-300" style="background: #0d0d1a;">
+    <div class="glow-cyan product-row rounded-2xl p-8 sm:p-12 transition-all duration-300 bg-cyber-card">
       <p class="tag mb-6">// PRODUCTIVITY</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <!-- Image stack -->
@@ -206,7 +80,7 @@
     </div>
 
     <!-- Row 2: SUPER 2048 PRO -->
-    <div class="glow-purple product-row rounded-2xl p-8 sm:p-12 transition-all duration-300" style="background: #0d0d1a;">
+    <div class="glow-purple product-row rounded-2xl p-8 sm:p-12 transition-all duration-300 bg-cyber-card">
       <p class="tag mb-6">// GAMING</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <!-- Text -->
@@ -231,11 +105,11 @@
     </div>
 
     <!-- Row 3: CHARITY -->
-    <a href="charity.html" class="block glow-green product-row rounded-2xl p-8 sm:p-12 transition-all duration-300 cursor-pointer group" style="background: #0d0d1a;">
+    <a href="charity.html" class="block glow-green product-row rounded-2xl p-8 sm:p-12 transition-all duration-300 cursor-pointer group bg-cyber-card">
       <p class="tag mb-6">// COMMUNITY</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <!-- Image -->
-        <div class="rounded-xl overflow-hidden order-1" style="height: 280px;">
+        <div class="rounded-xl overflow-hidden order-1 h-[280px]">
           <img
             src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80"
             alt="Child with a meal"
@@ -261,12 +135,12 @@
     </a>
 
     <!-- Row 4: ARC_MAGE -->
-    <a href="https://arcmage.ai" target="_blank" rel="noopener noreferrer" class="block glow-ai product-row rounded-2xl p-8 sm:p-12 transition-all duration-300 cursor-pointer group" style="background: #0d0d1a;">
+    <a href="https://arcmage.ai" target="_blank" rel="noopener noreferrer" class="block glow-ai product-row rounded-2xl p-8 sm:p-12 transition-all duration-300 cursor-pointer group bg-cyber-card">
       <p class="tag mb-6">// AI</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <!-- Text -->
         <div class="order-2 md:order-1">
-          <h2 class="text-4xl sm:text-5xl font-black tracking-tight mb-4" style="color: #a855f7;">
+          <h2 class="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-cyber-purple">
             arc_mage
             <span class="inline-block text-2xl text-cyber-purple group-hover:translate-x-1 transition-transform duration-200">→</span>
           </h2>
@@ -279,7 +153,7 @@
           </div>
         </div>
         <!-- AI Visual -->
-        <div class="order-1 md:order-2 rounded-xl overflow-hidden" style="height: 280px;">
+        <div class="order-1 md:order-2 rounded-xl overflow-hidden h-[280px]">
           <img
             src="assets/products/arcmage/arcmage.png"
             alt="arc_mage interface"
@@ -293,7 +167,7 @@
 
   <!-- Footer -->
   <footer class="border-t border-white/5 px-6 py-8 text-center">
-    <p class="tag" style="color: #2d2d4a;">// Arc Aleph LLC · AI · Entertainment · Community</p>
+    <p class="tag text-[#2d2d4a]">// Arc Aleph LLC · AI · Entertainment · Community</p>
   </footer>
 
 </body>
