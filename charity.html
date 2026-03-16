@@ -11,6 +11,7 @@
                  img-src 'self' data: https://www.paypalobjects.com https://images.unsplash.com;
                  connect-src 'self' https://www.paypal.com https://www.sandbox.paypal.com;
                  frame-src https://www.paypal.com;">
+  <meta name="description" content="Help Arc Aleph's Feed a Child initiative provide meals to children in need. Every donation makes a direct impact — contribute today.">
   <title>Charity — Feed a Child | Arc Aleph LLC</title>
   <link rel="icon" href="assets/official-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,8 +22,11 @@
   <!-- PayPal JS SDK
        Replace YOUR_CLIENT_ID with your app's client ID from developer.paypal.com.
        For sandbox testing use your sandbox client ID and add &components=buttons to the URL.
-       Switch to live by removing the &debug=true param and using your live client ID. -->
-  <script src="https://www.paypal.com/sdk/js?client-id=ARIb_fdkSbFVeEWMzOnA3iscvuSa0U5zcTgz1eAbpRrCfGMxhkWW6ZagJLIks2_nuFwb7tTKq8_V48TZ&currency=USD&intent=capture&components=buttons" data-namespace="paypal"></script>
+       Switch to live by removing the &debug=true param and using your live client ID.
+       SRI NOTE: PayPal's SDK URL is parameterised and PayPal does not publish integrity hashes;
+       the SDK content can change server-side without a URL change, making a static hash fragile.
+       Monitor https://developer.paypal.com/sdk/js/ for official SRI / version-pinning support. -->
+  <script src="https://www.paypal.com/sdk/js?client-id=ARIb_fdkSbFVeEWMzOnA3iscvuSa0U5zcTgz1eAbpRrCfGMxhkWW6ZagJLIks2_nuFwb7tTKq8_V48TZ&currency=USD&intent=capture&components=buttons" crossorigin="anonymous" data-namespace="paypal"></script>
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased">
   <div data-include="components/header.html" aria-hidden="false"></div>
