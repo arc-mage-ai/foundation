@@ -36,4 +36,4 @@ Open your browser at `http://localhost:8080/index.html` (or the port you chose).
 - To stop a server started with `npx http-server` press `Ctrl+C` in the terminal where it's running, or kill the process by PID.
 
 ## Development tips
-- For live reload while editing, consider `npx live-server` or the VS Code Live Server extension.
+- For live reload while editing, consider `npx live-server` or the VS Code Live Server extension....
