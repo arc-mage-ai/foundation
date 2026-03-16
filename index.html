@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSP: tighten script-src once cdn.tailwindcss.com is replaced with a built CSS file (removes need for unsafe-eval/unsafe-inline) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com;
+                 img-src 'self' data: https://images.unsplash.com;
+                 connect-src 'self';
+                 frame-src 'none';">
   <title>Arc Aleph LLC — AI · Entertainment · Community</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -252,7 +261,7 @@
     </a>
 
     <!-- Row 4: ARC_MAGE -->
-    <a href="https://arcmage.ai" target="_blank" rel="noopener" class="block glow-ai product-row rounded-2xl p-8 sm:p-12 transition-all duration-300 cursor-pointer group" style="background: #0d0d1a;">
+    <a href="https://arcmage.ai" target="_blank" rel="noopener noreferrer" class="block glow-ai product-row rounded-2xl p-8 sm:p-12 transition-all duration-300 cursor-pointer group" style="background: #0d0d1a;">
       <p class="tag mb-6">// AI</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <!-- Text -->

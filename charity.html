@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSP: tighten script-src once cdn.tailwindcss.com is replaced with a built CSS file (removes need for unsafe-eval/unsafe-inline) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://www.paypal.com https://www.paypalobjects.com;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com;
+                 img-src 'self' data: https://www.paypalobjects.com https://images.unsplash.com;
+                 connect-src 'self' https://www.paypal.com https://www.sandbox.paypal.com;
+                 frame-src https://www.paypal.com;">
   <title>Charity — Feed a Child | Arc Aleph LLC</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,6 +82,7 @@
           type="number"
           id="custom-input"
           min="1"
+          max="10000"
           placeholder="Enter amount"
           class="w-full pl-9 pr-4 py-3 text-lg font-semibold border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-0 outline-none transition-colors"
           aria-label="Custom donation amount"
@@ -157,7 +167,7 @@
         <button id="share-btn" class="px-5 py-2 text-sm font-medium border border-gray-200 rounded-full hover:bg-gray-50 transition-colors" aria-label="Copy share link">
           Copy Link
         </button>
-        <a href="https://twitter.com/intent/tweet?text=I%20just%20donated%20to%20feed%20children%20in%20need!" target="_blank" rel="noopener" class="px-5 py-2 text-sm font-medium border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
+        <a href="https://twitter.com/intent/tweet?text=I%20just%20donated%20to%20feed%20children%20in%20need!" target="_blank" rel="noopener noreferrer" class="px-5 py-2 text-sm font-medium border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
           Share on X
         </a>
       </div>

@@ -9,23 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return resp.text();
       })
       .then(html => {
-        el.innerHTML = html;
-        // Execute any scripts found in the included fragment
-        Array.from(el.querySelectorAll('script')).forEach(oldScript => {
-          const script = document.createElement('script');
-          if (oldScript.src) {
-            script.src = oldScript.src;
-            script.async = false;
-          } else {
-            script.textContent = oldScript.textContent;
-          }
-          oldScript.parentNode.replaceChild(script, oldScript);
-        });
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        // Strip scripts before insertion — components are markup-only
+        doc.querySelectorAll('script').forEach(s => s.remove());
+        el.replaceChildren(...doc.body.childNodes);
       })
       .catch(err => {
-        // Keep a minimal visible error for maintainers
         console.error(err);
-        el.innerHTML = '';
+        el.replaceChildren();
       });
   });
 });

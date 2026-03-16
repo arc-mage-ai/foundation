@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSP: tighten script-src once cdn.tailwindcss.com is replaced with a built CSS file (removes need for unsafe-eval/unsafe-inline) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com;
+                 img-src 'self' data:;
+                 connect-src 'self';
+                 frame-src 'none';">
   <title>Transparency Statement — FeedHope Foundation</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +53,7 @@
       <div class="grid grid-cols-2 gap-4 mb-5">
         <div class="bg-gray-50 rounded-2xl p-5">
           <p class="text-3xl font-bold text-emerald-600 mb-1">80¢</p>
-          <p class="text-sm font-medium text-gray-700">Goes directly to <a href="https://www.marysmealsusa.org/" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">Mary's Meals</a></p>
+          <p class="text-sm font-medium text-gray-700">Goes directly to <a href="https://www.marysmealsusa.org/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">Mary's Meals</a></p>
           <p class="text-xs text-gray-400 mt-1">A charity that provides school meals in some of the world's poorest communities</p>
         </div>
         <div class="bg-gray-50 rounded-2xl p-5">
@@ -62,7 +71,7 @@
     <section class="mb-8 border-t border-gray-100 pt-8">
       <h2 class="text-lg font-semibold mb-2">Why Mary's Meals?</h2>
       <p class="text-gray-600 leading-relaxed">
-        <a href="https://www.marysmealsusa.org/" target="_blank" rel="noopener" class="text-emerald-600 hover:underline">Mary's Meals</a> is a globally recognised charity with a low overhead model and independent financial audits. Their work is focused, verifiable, and cost-effective. We pass donations along as a batch transfer; we do not handle the meal logistics ourselves.
+        <a href="https://www.marysmealsusa.org/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">Mary's Meals</a> is a globally recognised charity with a low overhead model and independent financial audits. Their work is focused, verifiable, and cost-effective. We pass donations along as a batch transfer; we do not handle the meal logistics ourselves.
       </p>
     </section>
 
