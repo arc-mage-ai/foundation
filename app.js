@@ -23,7 +23,7 @@
   // Update totals for PayPal checkout
   function updateCheckoutTotals() {
     let additional = 0;
-    if (coverFeesCheckbox.checked) additional += 0.05;
+    if (coverFeesCheckbox.checked) additional += 0.25;
     if (shareCheckbox.checked) additional += 3.00;
 
     subtotalEl.textContent = `$${selectedAmount.toFixed(2)}`;
@@ -37,7 +37,7 @@
     container.innerHTML = '';
 
     let additional = 0;
-    if (coverFeesCheckbox.checked) additional += 0.05;
+    if (coverFeesCheckbox.checked) additional += 0.25;
     if (shareCheckbox.checked) additional += 3.00;
     const total = (selectedAmount + additional).toFixed(2);
 
