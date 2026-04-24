@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self';
+                 style-src 'self' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com;
+                 img-src 'self' data:;
+                 connect-src 'self';
+                 frame-src 'none';">
+  <meta name="description" content="Contact Arc Aleph support — we're here to help.">
+  <title>Support — Arc Aleph LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="support.css">
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased">
+  <div data-include="components/header.html" aria-hidden="false"></div>
+
+  <main>
+    <div class="support-wrap">
+
+      <h1 class="support-heading">Contact Support</h1>
+      <p class="support-sub">Fill in the form, it will open your email, send it, and we'll get back to you as soon as we can.</p>
+
+      <div class="support-card">
+        <form id="support-form" novalidate>
+
+          <!-- Name + Email -->
+          <div class="support-row">
+            <div>
+              <label for="name" class="support-label">Your name</label>
+              <input id="name" name="name" type="text" class="support-field" placeholder="Jane Smith" required autocomplete="name">
+            </div>
+            <div>
+              <label for="email" class="support-label">Email address</label>
+              <input id="email" name="email" type="email" class="support-field" placeholder="you@example.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="support-group">
+            <label for="subject" class="support-label">Subject</label>
+            <input id="subject" name="subject" type="text" class="support-field" placeholder="What's this about?" required>
+          </div>
+
+          <!-- Message -->
+          <div class="support-group">
+            <label for="message" class="support-label">Message</label>
+            <textarea id="message" name="message" class="support-field" placeholder="Tell us what's going on…" required></textarea>
+          </div>
+
+          <button type="submit" class="support-submit">Send Message</button>
+
+        </form>
+      </div>
+
+      <p class="support-note">
+        Or email us directly at
+        <a href="mailto:support@arcaleph.com">support@arcaleph.com</a>
+      </p>
+
+      <a href="index.html" class="support-back">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+        Back to home
+      </a>
+
+    </div>
+  </main>
+
+  <div data-include="components/footer.html" aria-hidden="false"></div>
+
+  <script src="scripts/include-components.js"></script>
+  <script src="support.js"></script>
+</body>
+</html>

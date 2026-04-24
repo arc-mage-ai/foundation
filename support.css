@@ -1,0 +1,150 @@
+/* ── Page ── */
+body {
+  background-color: #fff !important;
+  background-image: none !important;
+}
+
+/* ── Layout ── */
+.support-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+.support-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.375rem;
+  letter-spacing: -0.02em;
+}
+
+.support-sub {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0 0 2.25rem;
+}
+
+/* ── Card ── */
+.support-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+}
+
+/* ── Field groups ── */
+.support-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 520px) {
+  .support-row { grid-template-columns: 1fr; }
+}
+
+.support-group {
+  margin-bottom: 1.25rem;
+}
+
+.support-group:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+/* ── Label ── */
+.support-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.4rem;
+}
+
+/* ── Input / Textarea ── */
+.support-field {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6875rem 0.875rem !important;
+  border: 1.5px solid #d1d5db !important;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #111827 !important;
+  background: #f9fafb !important;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.support-field::placeholder {
+  color: #9ca3af;
+}
+
+.support-field:focus {
+  border-color: #10b981 !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+}
+
+textarea.support-field {
+  resize: vertical;
+  min-height: 9rem;
+  line-height: 1.6;
+}
+
+/* ── Submit button ── */
+.support-submit {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1rem !important;
+  background: #10b981 !important;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  border: none !important;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.support-submit:hover  { background: #059669 !important; }
+.support-submit:active { transform: scale(0.985); }
+
+/* ── Footer note ── */
+.support-note {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+.support-note a {
+  color: #10b981;
+  text-decoration: none;
+}
+
+.support-note a:hover {
+  text-decoration: underline;
+}
+
+/* ── Back link ── */
+.support-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #10b981;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.support-back:hover { color: #059669; }
